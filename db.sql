@@ -1,0 +1,9 @@
+create database WEBM1;
+
+use WEBM1;
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  age INTEGER NOT NULL,
+  email VARCHAR(100) NOT NULL
+);
