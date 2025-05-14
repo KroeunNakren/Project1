@@ -15,6 +15,9 @@ $stmt = $pdo->query("SELECT * FROM users ORDER BY id DESC");
 	<h2>Homepage</h2>
 	<p>
 		<a href="add.php">Add New Data</a>
+		<br>
+		<a href="about.php">About</a>
+		<br>
 	</p>
 	<table width='80%' border=0>
 		<tr bgcolor='#DDDDDD'>
