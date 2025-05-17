@@ -4,6 +4,7 @@ require_once("dbConnection.php");
 
 // Fetch data in descending order (latest entry first)
 $stmt = $pdo->query("SELECT * FROM users ORDER BY id DESC");
+
 ?>
 
 <html>

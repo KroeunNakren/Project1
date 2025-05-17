@@ -1,33 +1,27 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Add Data</title>
+    <title>Add User</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<body class="container mt-5">
+    <h2>Add New User</h2>
+    <a href="index.php" class="btn btn-secondary mb-3">Back to Home</a>
 
-<body>
-	<h2>Add Data</h2>
-	<p>
-		<a href="index.php">Home</a>
-	</p>
-
-	<form action="addAction.php" method="post" name="add">
-		<table width="25%" border="0">
-			<tr> 
-				<td>Name</td>
-				<td><input type="text" name="name"></td>
-			</tr>
-			<tr> 
-				<td>Age</td>
-				<td><input type="text" name="age"></td>
-			</tr>
-			<tr> 
-				<td>Email</td>
-				<td><input type="text" name="email"></td>
-			</tr>
-			<tr> 
-				<td></td>
-				<td><input type="submit" name="submit" value="Add"></td>
-			</tr>
-		</table>
-	</form>
+    <form action="addAction.php" method="post">
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Age</label>
+            <input type="number" name="age" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+        <button type="submit" name="submit" class="btn btn-success">Add</button>
+    </form>
 </body>
 </html>

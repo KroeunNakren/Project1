@@ -1,52 +1,36 @@
 <?php
-// Include the database connection file
 require_once("dbConnection.php");
-
-// Get id from URL parameter
 $id = $_GET['id'];
-
-// Prepare and execute the SELECT statement
 $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
 $stmt->execute(['id' => $id]);
-
-// Fetch the result as an associative array
-$resultData = $stmt->fetch(PDO::FETCH_ASSOC);
-
-$name = $resultData['name'];
-$age = $resultData['age'];
-$email = $resultData['email'];
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
+<!DOCTYPE html>
 <html>
-<head>    
-    <title>Edit Data</title>
+<head>
+    <title>Edit User</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<body class="container mt-5">
+    <h2>Edit User</h2>
+    <a href="index.php" class="btn btn-secondary mb-3">Back to Home</a>
 
-<body>
-    <h2>Edit Data</h2>
-    <p><a href="index.php">Home</a></p>
-
-    <form name="edit" method="post" action="editAction.php">
-        <table border="0">
-            <tr> 
-                <td>Name</td>
-                <td><input type="text" name="name" value="<?php echo htmlspecialchars($name); ?>"></td>
-            </tr>
-            <tr> 
-                <td>Age</td>
-                <td><input type="text" name="age" value="<?php echo htmlspecialchars($age); ?>"></td>
-            </tr>
-            <tr> 
-                <td>Email</td>
-                <td><input type="text" name="email" value="<?php echo htmlspecialchars($email); ?>"></td>
-            </tr>
-            <!-- Add hidden input for ID -->
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-            <tr>
-                <td></td>
-                <td><input type="submit" name="update" value="Update"></td>
-            </tr>
-        </table>
+    <form action="editAction.php" method="post">
+        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" value="<?= htmlspecialchars($user['name']) ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Age</label>
+            <input type="number" name="age" value="<?= htmlspecialchars($user['age']) ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" class="form-control" required>
+        </div>
+        <button type="submit" name="update" class="btn btn-warning">Update</button>
     </form>
 </body>
 </html>
